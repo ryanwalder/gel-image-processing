@@ -2,6 +2,16 @@
 # unlike Make so ensure we're always cding into the right dir
 _root := `git rev-parse --show-toplevel 2>/dev/null`
 
+## App vars
+# Python version must be explicitly set via environment variable
+# PYTHON_VERSION gets defined as an envar and tfvar so we can use it during
+# lambda function builds
+export PYTHON_VERSION := "3.12"
+export TF_VAR_python_version := PYTHON_VERSION
+export TF_VAR_max_file_size := "10485760"
+export TF_VAR_project_name := "gel-exifstrip"
+export TF_VAR_log_level := "INFO"
+
 ## Private helpers
 _default:
   @just --list
@@ -38,4 +48,8 @@ clean:
     rm -rf \
       {{_root}}/terraform/.terraform \
       {{_root}}/terraform/bootstrap/.terraform \
-      {{_root}}/terraform/bootstrap/terraform.tfstate*
+      {{_root}}/terraform/bootstrap/terraform.tfstate* \
+      {{_root}}/app/*.zip \
+      {{_root}}/app/.venv \
+      {{_root}}/app/dist \
+      {{_root}}/.dist
