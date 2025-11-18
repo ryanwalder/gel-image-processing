@@ -1,0 +1,38 @@
+# Terraform
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+*.tfvars
+.dist/
+
+# Temporary files
+*.tmp
+*.bak
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Python (if any local scripts)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# Local development
+.env
+.env.local
